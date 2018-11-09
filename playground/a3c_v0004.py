@@ -333,7 +333,7 @@ def test(rank, args, shared_model, counter):
 
         action = prob.max(1, keepdim=True)[1].data
 
-        state, reward, done, _ = env.step(action_map[action.numpy()[0,0]])
+        state, reward, done, _ = env.step(action_map[action.numpy()[0, 0]])
         # state, reward, done, _ = env.step(action.numpy())
         # state, reward, done, _ = env.step(action.numpy()[0, 0])
 
