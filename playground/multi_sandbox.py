@@ -16,7 +16,7 @@ import torch.optim as optim
 
 # Hyper-parameter
 LEARNING_RATE = 0.0001
-num_processes = 3
+num_processes = 6
 
 def image_pre_process(frame):
     frame = frame[34:34 + 160, :160]
@@ -154,7 +154,10 @@ class Model(torch.nn.Module):
         logit = self.actor_linear(self.h_policy_LSTM)
         prob = F.softmax(logit, dim=1)
 
-        sample_num = prob.multinomial(num_samples=1).data
+        if self.training:
+            sample_num = prob.multinomial(num_samples=1).data
+        else:
+            sample_num = prob.max(1, keepdim=True)[1].data
 
 
 

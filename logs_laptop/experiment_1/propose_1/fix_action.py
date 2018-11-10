@@ -16,7 +16,7 @@ import torch.optim as optim
 
 # Hyper-parameter
 LEARNING_RATE = 0.0001
-num_processes = 1
+num_processes = 6
 
 def image_pre_process(frame):
     frame = frame[34:34 + 160, :160]

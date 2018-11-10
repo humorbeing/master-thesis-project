@@ -13,6 +13,11 @@ import torch.nn.functional as F
 import torch.multiprocessing as mp
 import torch.optim as optim
 
+
+# Hyper-parameter
+LEARNING_RATE = 0.0001
+num_processes = 6
+
 def image_pre_process(frame):
     frame = frame[34:34 + 160, :160]
     frame = cv2.resize(frame, (80, 80))
@@ -30,6 +35,8 @@ def tensor_state(state):
     state = state.unsqueeze(0)
     return state
 
+
+
 class Model(torch.nn.Module):
     def __init__(self, num_inputs, num_outputs):
         super(Model, self).__init__()
@@ -38,10 +45,7 @@ class Model(torch.nn.Module):
             1: 3
         }
         self.num_outputs = num_outputs
-        self.conv1 = nn.Conv2d(num_inputs, 32, 4, stride=2)
-        self.conv2 = nn.Conv2d(32, 32, 4, stride=2)
-        self.conv3 = nn.Conv2d(32, 64, 3, stride=2)
-        self.conv4 = nn.Conv2d(64, 128, 2, stride=2)
+
         self.z_size = 32
         self.encoder = nn.Sequential(
             nn.Conv2d(in_channels=num_inputs, out_channels=32, kernel_size=4, stride=2),
@@ -67,40 +71,27 @@ class Model(torch.nn.Module):
             nn.Sigmoid())
         self.policy_lstm = nn.LSTMCell(32+256, 256)
         self.model_lstm = nn.LSTMCell(32 + 2, 256)
-        # num_outputs = action_space.n
-        # num_outputs = action_space
-        # num_outputs = 6
+
         self.critic_linear = nn.Linear(256, 1)
         self.actor_linear = nn.Linear(256, num_outputs)
         self.kl_tolerance = 0.5
-        # self.apply(weights_init)
-        # self.actor_linear.weight.data = normalized_columns_initializer(
-        #     self.actor_linear.weight.data, 0.01)
-        # self.actor_linear.bias.data.fill_(0)
-        # self.critic_linear.weight.data = normalized_columns_initializer(
-        #     self.critic_linear.weight.data, 1.0)
-        # self.critic_linear.bias.data.fill_(0)
 
-        # self.lstm.bias_ih.data.fill_(0)
-        # self.lstm.bias_hh.data.fill_(0)
-        # batch_this = 1
-        # self.h_policy_LSTM = torch.zeros(batch_this, 256)
-        # self.c_policy_LSTM = torch.zeros(batch_this, 256)
-        # self.h_model_LSTM = torch.zeros(batch_this, 256)
-        # self.c_model_LSTM = torch.zeros(batch_this, 256)
 
         self.num_mix = 5
         NOUT = self.num_mix * 3 * self.z_size
         self.mdn_linear = nn.Linear(256, NOUT)
         self.train()
-        self.are_we_training = True
+        # self.are_we_training = True
         self.logSqrtTwoPI = np.log(np.sqrt(2.0 * np.pi))
+
     def reset_hidden_layer(self):
         batch_this = 1
         self.h_policy_LSTM = torch.zeros(batch_this, 256)
         self.c_policy_LSTM = torch.zeros(batch_this, 256)
         self.h_model_LSTM = torch.zeros(batch_this, 256)
         self.c_model_LSTM = torch.zeros(batch_this, 256)
+        self.logweight_mdn = None
+
     def encode(self, inputs):
         x = self.encoder(inputs)
         x = x.view(x.size(0), -1)
@@ -123,16 +114,16 @@ class Model(torch.nn.Module):
         kl_loss = torch.mean(kl_loss)
         return kl_loss
 
-    def reconstruction_error(self):
+    def reconstruction_error_f(self, inputs):
         x_hat = self.decode_fc(self.z)
         x_hat = x_hat[:, :, None, None]
         x_hat = self.decoder(x_hat)
         # print(self.inputs.shape)
         # print(x_hat.shape)
-        r_loss = F.mse_loss(x_hat, self.inputs)
+        r_loss = F.mse_loss(x_hat, inputs)
         return r_loss
 
-    def mdn_loss(self):
+    def mdn_loss_f(self):
         # print(self.z.shape)
         # print(self.logweight_mdn.shape)
         y = torch.reshape(self.z,[-1, 1])
@@ -150,58 +141,50 @@ class Model(torch.nn.Module):
         return v
 
     def forward(self, inputs):
-        if self.are_we_training:
-            self.inputs = inputs
+
         self.z = self.encode(inputs)
 
 
         x_policy = torch.cat((self.z, self.h_model_LSTM), dim=1)
         self.h_policy_LSTM, self.c_policy_LSTM = self.policy_lstm(
             x_policy, (self.h_policy_LSTM, self.c_policy_LSTM))
-        self.v = self.critic_linear(self.h_policy_LSTM)
+
         logit = self.actor_linear(self.h_policy_LSTM)
         prob = F.softmax(logit, dim=1)
-        log_prob = torch.log(prob)
-        if self.are_we_training:
-            # print(self.training)
+
+        if self.training:
             sample_num = prob.multinomial(num_samples=1).data
-            # print(sample_num.shape)
-            # print(sample_num)
-            # a = prob.max(1, keepdim=True)[1].data
-            # print(a.shape)
-            # print(a)
-            # input('hi')
-            self.entropy = -(log_prob * prob).sum(1, keepdim=True)
-            self.log_prob_action = log_prob.gather(1, sample_num)
         else:
-            action = max(5)
+            sample_num = prob.max(1, keepdim=True)[1].data
+
+
+
         action = self.action_map[sample_num.item()]
 
-        # print('aaaa')
-        # print(sample_num)
-        # print('bbbb')
         action_onehot = torch.FloatTensor(sample_num.shape[0], self.num_outputs)
         action_onehot.zero_()
         action_onehot.scatter_(1, sample_num, 1)
-        # print(action_onehot)
 
         x_model = torch.cat((self.z, action_onehot), dim=1)
-        # print(x_model.shape)
+
         self.h_model_LSTM, self.c_model_LSTM = self.model_lstm(
             x_model, (self.h_model_LSTM, self.c_model_LSTM)
         )
-        vecs = self.mdn_linear(self.h_model_LSTM)
-        vecs = torch.reshape(vecs, (-1, self.num_mix * 3))
-        # print(vecs.shape)
-        self.logweight_mdn, self.mean_mdn, self.logstd_mdn = self.get_mdn_coef(vecs)
+        if self.training:
+            self.reconstruction_error = self.reconstruction_error_f(inputs)
+            self.v = self.critic_linear(self.h_policy_LSTM)
+            log_prob = torch.log(prob)
+            self.entropy = -(log_prob * prob).sum(1, keepdim=True)
+            self.log_prob_action = log_prob.gather(1, sample_num)
+            vecs = self.mdn_linear(self.h_model_LSTM)
+            vecs = torch.reshape(vecs, (-1, self.num_mix * 3))
+            if self.logweight_mdn is None:
+                self.mdn_loss = 0
+            else:
+                self.mdn_loss = self.mdn_loss_f()
+            self.logweight_mdn, self.mean_mdn, self.logstd_mdn = self.get_mdn_coef(vecs)
 
-        # print(a.shape)
-        # print(b.shape)
-        # print(c.shape)
-        # print(vecs.shape)
-        # print(action)
-        # print(action.item())
-        # return z, x_hat, mu, logvar, v, prob, action
+
         return action
 
     def get_mdn_coef(self, output):
@@ -212,25 +195,100 @@ class Model(torch.nn.Module):
         # print(x.shape)
         return logweight, mean, logstd
 
+class SharedAdam(optim.Adam):
+    """Implements Adam algorithm with shared states.
+    """
+
+    def __init__(self,
+                 params,
+                 lr=1e-3,
+                 betas=(0.9, 0.999),
+                 eps=1e-8,
+                 weight_decay=0):
+        super(SharedAdam, self).__init__(params, lr, betas, eps, weight_decay)
+
+        for group in self.param_groups:
+            for p in group['params']:
+                state = self.state[p]
+                state['step'] = torch.zeros(1)
+                state['exp_avg'] = p.data.new().resize_as_(p.data).zero_()
+                state['exp_avg_sq'] = p.data.new().resize_as_(p.data).zero_()
+
+    def share_memory(self):
+        for group in self.param_groups:
+            for p in group['params']:
+                state = self.state[p]
+                state['step'].share_memory_()
+                state['exp_avg'].share_memory_()
+                state['exp_avg_sq'].share_memory_()
+
+    def step(self, closure=None):
+        """Performs a single optimization step.
+        Arguments:
+            closure (callable, optional): A closure that reevaluates the model
+                and returns the loss.
+        """
+        loss = None
+        if closure is not None:
+            loss = closure()
+
+        for group in self.param_groups:
+            for p in group['params']:
+                if p.grad is None:
+                    continue
+                grad = p.grad.data
+                state = self.state[p]
+
+                exp_avg, exp_avg_sq = state['exp_avg'], state['exp_avg_sq']
+                beta1, beta2 = group['betas']
+
+                state['step'] += 1
+
+                if group['weight_decay'] != 0:
+                    grad = grad.add(group['weight_decay'], p.data)
+
+                # Decay the first and second moment running average coefficient
+                exp_avg.mul_(beta1).add_(1 - beta1, grad)
+                exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+
+                denom = exp_avg_sq.sqrt().add_(group['eps'])
+
+                bias_correction1 = 1 - beta1 ** state['step'].item()
+                bias_correction2 = 1 - beta2 ** state['step'].item()
+                step_size = group['lr'] * math.sqrt(
+                    bias_correction2) / bias_correction1
+
+                p.data.addcdiv_(-step_size, exp_avg, denom)
+
+        return loss
+
+def ensure_shared_grads(model, shared_model):
+    for param, shared_param in zip(model.parameters(),
+                                   shared_model.parameters()):
+        if shared_param.grad is not None:
+            return
+        shared_param._grad = param.grad
+
 def sumup(x):
     y = torch.zeros(1, 1)
     for i in x:
         y += i
     return y
-def train():
+def train(rank, shared_model, optimizer, counter, lock):
     env_name = 'Pong-v0'
     env = gym.make(env_name)
+    env.seed(rank)
+    torch.manual_seed(rank)
 
     model = Model(3, 2)
-    # model.eval()
-    # print(model.training)
-    # input('hi')
-    optimizer = optim.Adam(model.parameters())
+    model.train()
+    # optimizer = optim.Adam(model.parameters())
     # state = env.reset()
     # state = tensor_state(state)
     # done = True
     while True:
         # if done:
+        model.load_state_dict(shared_model.state_dict())
         model.reset_hidden_layer()
         state = env.reset()
         state = tensor_state(state)
@@ -252,12 +310,12 @@ def train():
             log_prob_action = model.log_prob_action
             entropy = model.entropy
             kl_loss = model.kl_loss()
-            r_loss = model.reconstruction_error()
+            r_loss = model.reconstruction_error
             # print(action)
             state, reward, done,_ = env.step(action)
             state = tensor_state(state)
             action = model(state)
-            mdn_loss = model.mdn_loss()
+            mdn_loss = model.mdn_loss
 
             value_s.append(value)
             log_prob_action_s.append(log_prob_action)
@@ -266,7 +324,8 @@ def train():
             r_loss_s.append(r_loss)
             mdn_loss_s.append(mdn_loss)
             reward_s.append(reward)
-
+            with lock:
+                counter.value += 1
             if done:
                 break
         # value = model.v
@@ -306,136 +365,111 @@ def train():
         mdn_loss = sumup(mdn_loss_s)
         loss = policy_loss + value_loss_coef * value_loss
         loss = loss + kl_loss + r_loss + mdn_loss
-        print(mdn_loss.item())
+        # print(mdn_loss.item())
         optimizer.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), 50)
         optimizer.step()
-train()
 
-'''/media/ray/SSD/workspace/python/ENVIRONMENT/python3.5/bin/python3.5 /media/ray/SSD/workspace/python/Observe_RL/playground/sendbox.py
-2209.255859375
-2002.573486328125
-2062.91357421875
-1823.9141845703125
-1427.6298828125
-1680.0694580078125
-1731.3211669921875
-1427.0338134765625
-1443.6927490234375
-1196.9090576171875
-1470.2103271484375
-1126.939208984375
-1150.7401123046875
-1185.693603515625
-944.14990234375
-1423.58251953125
-1020.5972900390625
-1082.368408203125
-968.5101318359375
-809.5315551757812
-613.085205078125
-671.6913452148438
-484.2575988769531
-745.1591186523438
-1409.1173095703125
-1149.81201171875
-1161.833251953125
-763.8815307617188
-660.3465576171875
-928.1162719726562
-892.1175537109375
-912.2120971679688
-759.3568725585938
-966.0023193359375
-724.3278198242188
-732.0003662109375
-836.3831787109375
-681.9600830078125
-682.9187622070312
-600.8739624023438
-532.2359008789062
-817.9711303710938
-785.2003173828125
-798.12744140625
-773.4105224609375
-571.22314453125
-691.5338745117188
-632.5182495117188
-727.46240234375
-1096.1912841796875
-680.6519165039062
-988.3600463867188
-730.9271850585938
-511.0066833496094
-635.24853515625
-596.6061401367188
-649.3634033203125
-848.4030151367188
-855.62890625
-630.9821166992188
-624.47314453125
-599.7431030273438
-576.9091796875
-615.4712524414062
-556.63818359375
-719.6198120117188
-806.6124877929688
-787.3780517578125
-570.8167114257812
-488.2840576171875
-613.572265625
-817.85009765625
-717.064697265625
-460.44744873046875
-506.11688232421875
-465.47723388671875
-640.2860717773438
-819.6749877929688
-841.613525390625
-1001.6048583984375
-763.1406860351562
-622.4126586914062
-498.4680480957031
-411.6566162109375
-401.8402099609375
-395.33868408203125
-457.0047302246094
-558.2584838867188
-690.777099609375
-685.5515747070312
-651.8360595703125
-527.1126708984375
-665.2297973632812
-589.3564453125
-545.4338989257812
-540.00390625
-603.9466552734375
-557.0999755859375
-518.5076904296875
-567.105712890625
-488.0226745605469
-752.7748413085938
-738.2407836914062
-763.8513793945312
-484.48919677734375
-683.489990234375
-647.6279296875
-659.6362915039062
-619.4866333007812
-504.9701232910156
-548.3370971679688
-471.061279296875
-843.901611328125
-548.7545166015625
-500.6016540527344
-550.6656494140625
-493.19830322265625
-536.976806640625
-455.4026184082031
-473.07452392578125
-478.72149658203125
-464.2269592285156
+def test(rank, shared_model, counter):
+    env_name = 'Pong-v0'
+    env = gym.make(env_name)
+    env.seed(rank)
+    torch.manual_seed(rank)
 
-Process finished with exit code 137 (interrupted by signal 9: SIGKILL)
-'''
+    model = Model(3, 2)
+    # model.train()
+
+    model.eval()
+
+
+    state = env.reset()
+    state = tensor_state(state)
+    reward_sum = 0
+    done = True
+
+    start_time = time.time()
+
+    # a quick hack to prevent the agent from stucking
+    actions = deque(maxlen=200)
+    all_good = True
+    episode_length = 0
+    while True:
+        episode_length += 1
+        # Sync with the shared model
+        env.render()
+        if done:
+            model.load_state_dict(shared_model.state_dict())
+            model.reset_hidden_layer()
+
+        # state = env.reset()
+        # state = tensor_state(state)
+
+        action = model(state)
+        # value, prob, (hx, cx) = model((state.unsqueeze(0), (hx, cx)))
+        #
+        # action = prob.max(1, keepdim=True)[1].data
+
+        state, reward, done, _ = env.step(action)
+        # state = tensor_state(state)
+        # state, reward, done, _ = env.step(action.numpy())
+        # state, reward, done, _ = env.step(action.numpy()[0, 0])
+
+        reward_sum += reward
+
+        # a quick hack to prevent the agent from stucking
+        actions.append(action)
+        if actions.count(actions[0]) == actions.maxlen:
+            all_good = False
+
+        if done:
+            if all_good:
+                string = "Time {}, num steps {}, FPS {:.0f}, episode reward {}, episode length {}".format(
+                    time.strftime("%Hh %Mm %Ss",
+                                  time.gmtime(time.time() - start_time)),
+                    counter.value, counter.value / (time.time() - start_time),
+                    reward_sum, episode_length)
+                print(string)
+                with open('log.txt', 'a') as f:
+                    f.write(string + '\n')
+            reward_sum = 0
+            episode_length = 0
+            actions.clear()
+            all_good = True
+            state = env.reset()
+            time.sleep(5)
+
+        state = tensor_state(state)
+
+
+if __name__ == "__main__":
+    os.environ['OMP_NUM_THREADS'] = '1'
+    mp.set_start_method('spawn')
+
+    # args = get_args()
+    # env = gym.make(args.env_name)
+
+    shared_model = Model(3, 2)
+
+    shared_model = shared_model.share_memory()
+    optimizer = SharedAdam(shared_model.parameters(), lr=LEARNING_RATE)
+    optimizer.share_memory()
+
+    processes = []
+    counter = mp.Value('i', 0)
+    lock = mp.Lock()
+
+    p = mp.Process(target=test, args=(num_processes, shared_model, counter))
+    p.start()
+    processes.append(p)
+
+    for rank in range(num_processes):
+        p = mp.Process(target=train, args=(rank,
+                                           shared_model,
+                                           optimizer,
+                                           counter,
+                                           lock))
+        p.start()
+        processes.append(p)
+    for p in processes:
+        p.join()
