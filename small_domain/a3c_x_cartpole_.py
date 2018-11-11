@@ -15,75 +15,28 @@ import torch.optim as optim
 
 from util import *
 
-
-
-def normalized_columns_initializer(weights, std=1.0):
-    out = torch.randn(weights.size())
-    out *= std / torch.sqrt(out.pow(2).sum(1, keepdim=True))
-    return out
-
-
-def weights_init(m):
-    classname = m.__class__.__name__
-    if classname.find('Conv') != -1:
-        weight_shape = list(m.weight.data.size())
-        fan_in = np.prod(weight_shape[1:4])
-        fan_out = np.prod(weight_shape[2:4]) * weight_shape[0]
-        w_bound = np.sqrt(6. / (fan_in + fan_out))
-        m.weight.data.uniform_(-w_bound, w_bound)
-        m.bias.data.fill_(0)
-    elif classname.find('Linear') != -1:
-        weight_shape = list(m.weight.data.size())
-        fan_in = weight_shape[1]
-        fan_out = weight_shape[0]
-        w_bound = np.sqrt(6. / (fan_in + fan_out))
-        m.weight.data.uniform_(-w_bound, w_bound)
-        m.bias.data.fill_(0)
-
 class Model(nn.Module):
-    def __init__(self, input_size=128, output_size=2):
+    def __init__(self, input_size=4, output_size=2):
         super(Model, self).__init__()
         self.action_map ={
-            0: 2,
-            1: 3
+            0: 0,
+            1: 1
         }
         self.input_size = input_size
         self.output_size = output_size
         self.hidden_size = 16
-        self.encoder = nn.Sequential(
-            nn.Linear(input_size, 64),
-            nn.ReLU(),
-            nn.Linear(64, 16),
-            nn.ReLU(),
-            # nn.Linear(64, 32),
-            # nn.ReLU(),
-            # nn.Linear(input_size, 64),
-            # nn.ReLU()
-        )
-        self.lstm = nn.LSTMCell(32, self.hidden_size)
+        self.fc_encode1 = nn.Linear(self.input_size, self.hidden_size)
+        self.fc_encode2 = nn.Linear(self.hidden_size, self.hidden_size)
+
         self.fc_actor = nn.Linear(self.hidden_size, self.output_size)
         self.fc_critic = nn.Linear(self.hidden_size, 1)
 
-        # self.apply(weights_init)
-        self.fc_actor.weight.data = normalized_columns_initializer(
-            self.fc_actor.weight.data, 0.01)
-        self.fc_actor.bias.data.fill_(0)
-        self.fc_critic.weight.data = normalized_columns_initializer(
-            self.fc_critic.weight.data, 1.0)
-        self.fc_critic.bias.data.fill_(0)
-        # self.lstm.bias_ih.data.fill_(0)
-        # self.lstm.bias_hh.data.fill_(0)
-
         self.train()
-    def init_(self):
-        self.h_lstm = torch.zeros(1, self.hidden_size)
-        self.c_lstm = torch.zeros(1, self.hidden_size)
 
     def forward(self, inputs):
-        z = self.encoder(inputs)
-        # self.h_lstm, self.c_lstm = self.lstm(
-        #     z, (self.h_lstm, self.c_lstm)
-        # )
+        z = F.relu(self.fc_encode1(inputs))
+        z = F.relu(self.fc_encode2(z))
+
         logit = self.fc_actor(z)
 
         prob = F.softmax(logit, dim=1)
@@ -105,8 +58,6 @@ class Model(nn.Module):
 
 
 def pre_process(state):
-    # state = state.dtype(np.float)
-    state = state / 255.0
     return state
 
 def tensor_state(state):
@@ -123,21 +74,34 @@ def tensor_state(state):
     return state
 
 
-env_name = 'Pong-ram-v0'
+env_name = 'CartPole-v1'
 num_processes = 9
-seed = 9
+# env = gym.make(env_nam
+# e)
+# env.seed(1)
+# torch.manual_seed(1)
+#
+# model = Model(4, 2)
+# model.train()
+#
+# state = env.reset()
+#
+# while True:
+#     env.render()
+#     state = tensor_state(state)
+#     action = model(state)
+#     state, r, d, i = env.step(action)
 
-def train(rank, shared_model, optimizer, counter, lock):
+
+def train(shared_model, optimizer, counter, lock):
     env = gym.make(env_name)
-    env.seed(seed + rank)
-    torch.manual_seed(seed + rank)
     model = Model()
     model.train()
 
     while True:
         state = env.reset()
         model.load_state_dict(shared_model.state_dict())
-        # model.init_()
+
         value_s = []
         action_log_prob_s = []
         entropy_s = []
@@ -187,16 +151,14 @@ def train(rank, shared_model, optimizer, counter, lock):
         loss = policy_loss + value_loss_coef * value_loss
         optimizer.zero_grad()
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 50)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 10)
         optimizer.step()
 
 
-def test(rank, shared_model, counter):
+def test(shared_model, counter):
     with open('log.txt', 'w'):
         pass
     env = gym.make(env_name)
-    env.seed(seed + rank)
-    torch.manual_seed(seed + rank)
 
     model = Model()
     model.eval()
@@ -204,7 +166,6 @@ def test(rank, shared_model, counter):
     while True:
         episode_length = 0
         model.load_state_dict(shared_model.state_dict())
-        # model.init_()
         state = env.reset()
         reward_sum = 0
         while True:
@@ -244,13 +205,13 @@ if __name__ == '__main__':
     counter = mp.Value('i', 0)
     lock = mp.Lock()
 
-    p = mp.Process(target=test, args=(num_processes, shared_model, counter))
+    p = mp.Process(target=test, args=(shared_model, counter))
     p.start()
     processes.append(p)
 
     for rank in range(num_processes):
         p = mp.Process(target=train, args=(
-            rank, shared_model, optimizer, counter, lock
+            shared_model, optimizer, counter, lock
         ))
         p.start()
         processes.append(p)
