@@ -1543,3 +1543,15 @@ Time 01h 52m 12s, num steps 34160853, FPS 367, episode reward 15.0, episode leng
 Time 01h 53m 13s, num steps 34186384, FPS 367, episode reward 17.0, episode length 9580
 Time 01h 54m 16s, num steps 34212643, FPS 367, episode reward 13.0, episode length 9731
 Time 01h 54m 56s, num steps 34226792, FPS 367, episode reward 21.0, episode length 4941
+Time 00h 00m 06s, num steps 0, FPS 0, episode reward -21.0, episode length 1027
+Time 00h 00m 15s, num steps 0, FPS 0, episode reward -21.0, episode length 1035
+Time 00h 00m 06s, num steps 0, FPS 0, episode reward -21.0, episode length 1027
+Time 00h 00m 06s, num steps 0, FPS 0, episode reward -21.0, episode length 1027
+Time 00h 00m 06s, num steps 0, FPS 0, episode reward -21.0, episode length 1027
+Time 00h 00m 06s, num steps 80, FPS 12, episode reward -21.0, episode length 1027
+Time 00h 00m 15s, num steps 80, FPS 5, episode reward -21.0, episode length 1035
+Time 00h 00m 25s, num steps 80, FPS 3, episode reward -21.0, episode length 1027
+Time 00h 00m 34s, num steps 80, FPS 2, episode reward -21.0, episode length 1022
+Time 00h 00m 43s, num steps 80, FPS 2, episode reward -21.0, episode length 1012
+Time 00h 00m 52s, num steps 80, FPS 2, episode reward -21.0, episode length 1016
+Time 00h 01m 01s, num steps 80, FPS 1, episode reward -21.0, episode length 1014
