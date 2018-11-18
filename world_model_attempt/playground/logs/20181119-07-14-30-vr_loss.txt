@@ -1,0 +1,27 @@
+Epoch: 0, Next KL: 76.549628, Next Recon Loss: 0.001435, Pred Loss: 4300.757910, Pred Recon Loss: 0.001451, MDN Loss: 0.574181
+Epoch: 1, Next KL: 106.763862, Next Recon Loss: 0.000447, Pred Loss: 236.083564, Pred Recon Loss: 0.000470, MDN Loss: 0.370112
+Epoch: 2, Next KL: 107.901708, Next Recon Loss: 0.000347, Pred Loss: 70.122806, Pred Recon Loss: 0.000363, MDN Loss: 0.274549
+Epoch: 3, Next KL: 116.367912, Next Recon Loss: 0.000331, Pred Loss: 29.151152, Pred Recon Loss: 0.000346, MDN Loss: 0.183118
+Epoch: 4, Next KL: 121.448200, Next Recon Loss: 0.000328, Pred Loss: 18.444120, Pred Recon Loss: 0.000344, MDN Loss: 0.092899
+Epoch: 5, Next KL: 122.147349, Next Recon Loss: 0.000328, Pred Loss: 16.326298, Pred Recon Loss: 0.000343, MDN Loss: 0.001884
+Epoch: 6, Next KL: 121.330151, Next Recon Loss: 0.000328, Pred Loss: 16.430423, Pred Recon Loss: 0.000343, MDN Loss: -0.091799
+Epoch: 7, Next KL: 120.618475, Next Recon Loss: 0.000327, Pred Loss: 16.636317, Pred Recon Loss: 0.000343, MDN Loss: -0.189911
+Epoch: 8, Next KL: 120.260110, Next Recon Loss: 0.000327, Pred Loss: 16.520630, Pred Recon Loss: 0.000343, MDN Loss: -0.293691
+Epoch: 9, Next KL: 120.032983, Next Recon Loss: 0.000327, Pred Loss: 16.450380, Pred Recon Loss: 0.000343, MDN Loss: -0.403391
+Epoch: 10, Next KL: 119.898666, Next Recon Loss: 0.000327, Pred Loss: 16.440277, Pred Recon Loss: 0.000343, MDN Loss: -0.518294
+Epoch: 11, Next KL: 119.843217, Next Recon Loss: 0.000327, Pred Loss: 16.361922, Pred Recon Loss: 0.000343, MDN Loss: -0.637106
+Epoch: 12, Next KL: 119.803657, Next Recon Loss: 0.000327, Pred Loss: 16.334346, Pred Recon Loss: 0.000343, MDN Loss: -0.758535
+Epoch: 13, Next KL: 119.782609, Next Recon Loss: 0.000327, Pred Loss: 16.289351, Pred Recon Loss: 0.000343, MDN Loss: -0.881380
+Epoch: 14, Next KL: 119.715649, Next Recon Loss: 0.000327, Pred Loss: 16.285343, Pred Recon Loss: 0.000343, MDN Loss: -1.004127
+Epoch: 15, Next KL: 119.683595, Next Recon Loss: 0.000327, Pred Loss: 16.278272, Pred Recon Loss: 0.000343, MDN Loss: -1.125260
+Epoch: 16, Next KL: 119.692816, Next Recon Loss: 0.000327, Pred Loss: 16.245955, Pred Recon Loss: 0.000343, MDN Loss: -1.243684
+Epoch: 17, Next KL: 119.691234, Next Recon Loss: 0.000327, Pred Loss: 16.280532, Pred Recon Loss: 0.000343, MDN Loss: -1.358817
+Epoch: 18, Next KL: 119.664043, Next Recon Loss: 0.000327, Pred Loss: 16.150433, Pred Recon Loss: 0.000343, MDN Loss: -1.470811
+Epoch: 19, Next KL: 119.575833, Next Recon Loss: 0.000327, Pred Loss: 16.210608, Pred Recon Loss: 0.000343, MDN Loss: -1.578606
+
+
+this is joint training.
+pred loss is 4300 to 236, and everything else is messed up?
+i think pred loss is make too big of a mess.
+
+first, make a rnn alone structure in VR, that gives similar result as RNN_me

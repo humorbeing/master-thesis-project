@@ -1,0 +1,25 @@
+Epoch: 0, Next KL: 16.240203, Next Recon Loss: 0.050214, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 1, Next KL: 16.000000, Next Recon Loss: 0.006343, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 2, Next KL: 16.000000, Next Recon Loss: 0.002743, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 3, Next KL: 16.000000, Next Recon Loss: 0.001261, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 4, Next KL: 16.020975, Next Recon Loss: 0.000663, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 5, Next KL: 16.000000, Next Recon Loss: 0.000574, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 6, Next KL: 16.000000, Next Recon Loss: 0.000455, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 7, Next KL: 16.021788, Next Recon Loss: 0.000420, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 8, Next KL: 16.000000, Next Recon Loss: 0.000416, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 9, Next KL: 16.064372, Next Recon Loss: 0.000464, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 10, Next KL: 16.000000, Next Recon Loss: 0.000385, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 11, Next KL: 16.045427, Next Recon Loss: 0.000368, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 12, Next KL: 16.000000, Next Recon Loss: 0.000364, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 13, Next KL: 16.000000, Next Recon Loss: 0.000355, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 14, Next KL: 16.000000, Next Recon Loss: 0.000349, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 15, Next KL: 16.000000, Next Recon Loss: 0.000344, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 16, Next KL: 16.000000, Next Recon Loss: 0.000340, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 17, Next KL: 16.003706, Next Recon Loss: 0.000339, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 18, Next KL: 16.000000, Next Recon Loss: 0.000339, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 19, Next KL: 16.000000, Next Recon Loss: 0.000337, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+
+
+seed:1
+
+no grad() is not used, gonna run 2nd time to check seed.

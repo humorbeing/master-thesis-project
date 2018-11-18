@@ -1,0 +1,3 @@
+Epoch: 0, Next KL: 91.508387, Next Recon Loss: 0.051447, Pred Loss: 12231.513928, Pred Recon Loss: 0.050751, MDN Loss: 1.085063
+Epoch: 1, Next KL: 79.485333, Next Recon Loss: 0.006012, Pred Loss: 361.781258, Pred Recon Loss: 0.006020, MDN Loss: 0.943963
+Epoch: 2, Next KL: 120.026290, Next Recon Loss: 0.002115, Pred Loss: 38.012916, Pred Recon Loss: 0.002102, MDN Loss: 0.938775

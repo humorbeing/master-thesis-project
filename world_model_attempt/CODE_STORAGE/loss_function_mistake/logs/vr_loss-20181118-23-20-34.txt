@@ -1,0 +1,13 @@
+Epoch: 0, Next KL: 17.792245, Next Recon Loss: 0.042313, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 1, Next KL: 16.000000, Next Recon Loss: 0.004949, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 2, Next KL: 16.000000, Next Recon Loss: 0.001598, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 3, Next KL: 16.228397, Next Recon Loss: 0.000866, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 4, Next KL: 19.676479, Next Recon Loss: 0.000620, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 5, Next KL: 23.595924, Next Recon Loss: 0.000510, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 6, Next KL: 27.390020, Next Recon Loss: 0.000454, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 7, Next KL: 31.089835, Next Recon Loss: 0.000421, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 8, Next KL: 34.507959, Next Recon Loss: 0.000401, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 9, Next KL: 37.567973, Next Recon Loss: 0.000388, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+
+
+only vae, in training run, no rnn at all

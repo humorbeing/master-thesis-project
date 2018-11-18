@@ -1,0 +1,14 @@
+Epoch: 0, Next KL: 16.000000, Next Recon Loss: 0.075634, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 1, Next KL: 16.000000, Next Recon Loss: 0.070975, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 2, Next KL: 16.000203, Next Recon Loss: 0.035500, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 3, Next KL: 16.000197, Next Recon Loss: 0.011777, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 4, Next KL: 19.483922, Next Recon Loss: 0.006483, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 5, Next KL: 27.416658, Next Recon Loss: 0.004702, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 6, Next KL: 33.652808, Next Recon Loss: 0.003638, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 7, Next KL: 41.012357, Next Recon Loss: 0.002809, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 8, Next KL: 48.061780, Next Recon Loss: 0.002162, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 9, Next KL: 53.156709, Next Recon Loss: 0.001696, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+
+
+in vae, with no rnn at all, but still
+suspect iid is problem.

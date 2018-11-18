@@ -1,0 +1,221 @@
+Epoch: 0, Next KL: 19.517466, Next Recon Loss: 0.046738, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 1, Next KL: 16.000000, Next Recon Loss: 0.005290, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 2, Next KL: 16.000000, Next Recon Loss: 0.001673, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 3, Next KL: 16.754960, Next Recon Loss: 0.000943, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 4, Next KL: 21.536302, Next Recon Loss: 0.000632, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 5, Next KL: 27.460888, Next Recon Loss: 0.000506, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 6, Next KL: 32.341514, Next Recon Loss: 0.000447, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 7, Next KL: 36.435175, Next Recon Loss: 0.000415, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 8, Next KL: 40.110218, Next Recon Loss: 0.000394, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 9, Next KL: 44.229957, Next Recon Loss: 0.000378, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 10, Next KL: 50.378315, Next Recon Loss: 0.000367, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 11, Next KL: 56.916469, Next Recon Loss: 0.000361, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 12, Next KL: 62.636098, Next Recon Loss: 0.000356, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 13, Next KL: 67.420639, Next Recon Loss: 0.000359, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 14, Next KL: 65.267518, Next Recon Loss: 0.000353, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 15, Next KL: 66.302963, Next Recon Loss: 0.000343, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 16, Next KL: 69.969756, Next Recon Loss: 0.000341, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 17, Next KL: 74.145154, Next Recon Loss: 0.000340, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 18, Next KL: 78.126463, Next Recon Loss: 0.000339, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 19, Next KL: 81.869745, Next Recon Loss: 0.000338, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 20, Next KL: 85.232245, Next Recon Loss: 0.000338, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 21, Next KL: 88.397557, Next Recon Loss: 0.000337, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 22, Next KL: 90.790483, Next Recon Loss: 0.000337, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 23, Next KL: 92.741927, Next Recon Loss: 0.000337, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 24, Next KL: 94.718573, Next Recon Loss: 0.000337, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 25, Next KL: 96.558086, Next Recon Loss: 0.000336, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 26, Next KL: 98.346237, Next Recon Loss: 0.000336, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 27, Next KL: 100.116904, Next Recon Loss: 0.000336, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 28, Next KL: 101.811042, Next Recon Loss: 0.000336, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 29, Next KL: 103.265455, Next Recon Loss: 0.000335, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 30, Next KL: 104.390306, Next Recon Loss: 0.000335, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 31, Next KL: 105.094843, Next Recon Loss: 0.000335, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 32, Next KL: 105.865088, Next Recon Loss: 0.000335, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 33, Next KL: 106.693661, Next Recon Loss: 0.000335, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 34, Next KL: 107.121751, Next Recon Loss: 0.000336, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 35, Next KL: 106.979308, Next Recon Loss: 0.000334, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 36, Next KL: 107.687194, Next Recon Loss: 0.000334, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 37, Next KL: 108.592818, Next Recon Loss: 0.000333, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 38, Next KL: 109.700741, Next Recon Loss: 0.000332, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 39, Next KL: 110.680124, Next Recon Loss: 0.000332, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 40, Next KL: 111.292115, Next Recon Loss: 0.000332, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 41, Next KL: 111.639099, Next Recon Loss: 0.000331, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 42, Next KL: 112.064631, Next Recon Loss: 0.000331, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 43, Next KL: 112.530194, Next Recon Loss: 0.000331, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 44, Next KL: 113.008491, Next Recon Loss: 0.000330, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 45, Next KL: 113.381538, Next Recon Loss: 0.000330, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 46, Next KL: 113.643239, Next Recon Loss: 0.000330, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 47, Next KL: 113.860404, Next Recon Loss: 0.000330, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 48, Next KL: 114.075440, Next Recon Loss: 0.000330, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 49, Next KL: 114.235863, Next Recon Loss: 0.000330, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+
+
+only vae, fresh vae, only st no st+1
+
+
+
+
+import argparse
+import os
+import gym
+import numpy as np
+import math
+import cv2
+import time
+from collections import deque
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.multiprocessing as mp
+import torch.optim as optim
+
+from this_util import *
+from vae import VAE
+from rnn_me import RNN
+
+
+class VAERNN(torch.nn.Module):
+    def __init__(self):
+        super(VAERNN, self).__init__()
+
+        self.z_size = 32
+        self.kl_tolerance = 0.5
+
+        self.vae = VAE()
+        self.rnn = RNN()
+
+        self.vae.train()
+        self.rnn.train()
+        self.init_()
+
+        self.is_cuda = False
+
+
+    def load(self):
+        self.vae.load_state_dict(torch.load(vae_model_path, map_location=lambda storage, loc: storage))
+        self.rnn.load_state_dict(torch.load(rnn_model_path, map_location=lambda storage, loc: storage))
+
+
+    def init_(self):
+        self.h = self.rnn.init_()
+
+    def forward(self, inputs):
+        z = self.vae(inputs)
+        return z
+
+    def when_train(self, inputs, one, outputs):
+        if self.is_cuda:
+            self.vae.is_cuda = True
+            self.vae.cuda()
+            self.rnn.is_cuda = True
+            self.rnn.cuda()
+
+
+        # with torch.no_grad():
+        z = self.vae(inputs)
+
+        z = z.unsqueeze(0)
+
+
+        z_a = torch.cat((z, one), dim=2)
+        self.rnn(z_a)
+        # z_next = self.vae(outputs)
+        self.next_kl_loss = self.vae.kl_loss
+        self.next_r_loss = self.vae.r_loss
+
+        # z_next = z_next.unsqueeze(0)
+        z_next = z
+
+        self.pred_loss = self.rnn.prediction_loss_f(z_next)
+        self.mdn_loss = self.rnn.mdn_loss_f(z_next)
+
+        z_next_hat = self.rnn.z_prediction
+
+        z_next_hat = z_next_hat.squeeze(0)
+        self.pred_recon_loss = self.vae.reconstruction_error_f(z_next_hat, inputs)
+
+
+
+
+if __name__ == "__main__":
+    log = LOG('vr_loss')
+    is_load = True
+    is_load = False
+    is_cuda = True
+    vr = VAERNN()
+    if is_load:
+        vr.load()
+    if is_cuda:
+        vr.cuda()
+        vr.is_cuda = True
+
+    vr.train()
+    params = list(vr.vae.parameters()) + list(vr.rnn.parameters())
+    optimizer = optim.Adam(params)
+    old_filelist = os.listdir(DATA_DIR)
+    block = 200
+    for epoch in range(50):
+        # np.random.shuffle(old_filelist)
+        filelist = old_filelist[0:block]
+        # np.random.shuffle(filelist)
+        next_kl_loss_s = []
+        next_r_loss_s = []
+        pred_loss_s = []
+        pred_recon_loss_s = []
+        mdn_loss_s = []
+        for filename in filelist:
+
+            raw_data = np.load(os.path.join(DATA_DIR, filename))
+            data = raw_data['obs']
+            outputs = data[1:, :, :, :]
+            data = data[:-1, :, :, :]
+
+            actions = raw_data['action']
+            actions = actions[:-1]
+            data = torch.from_numpy(data)
+            outputs = torch.from_numpy(outputs)
+            one = one_hot(actions)
+            one = torch.from_numpy(one)
+            one = one.unsqueeze(0)
+            one = one.type(torch.float)
+            if is_cuda:
+                data = data.cuda()
+                one = one.cuda()
+                outputs = outputs.cuda()
+            vr.when_train(data, one, outputs)
+
+
+            next_kl_loss = vr.next_kl_loss
+            next_r_loss = vr.next_r_loss
+            # pred_loss = vr.pred_loss
+            # pred_recon_loss = vr.pred_recon_loss
+            # mdn_loss = vr.mdn_loss
+            pred_loss = 0
+            pred_recon_loss = 0
+            mdn_loss = 0
+
+            next_kl_loss_s.append(next_kl_loss.item())
+            next_r_loss_s.append(next_r_loss.item())
+            # pred_loss_s.append(pred_loss.item())
+            # pred_recon_loss_s.append(pred_recon_loss.item())
+            # mdn_loss_s.append(mdn_loss.item())
+            pred_loss_s.append(0)
+            pred_recon_loss_s.append(0)
+            mdn_loss_s.append(0)
+
+            loss = next_r_loss + next_r_loss + pred_recon_loss + pred_loss + mdn_loss
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+        log_string = 'Epoch: {}, Next KL: {:.6f}, Next Recon Loss: {:.6f}, Pred Loss: {:.6f}, Pred Recon Loss: {:.6f}, MDN Loss: {:.6f}'.format(
+            epoch,
+            np.mean(next_kl_loss_s),
+            np.mean(next_r_loss_s),
+            np.mean(pred_loss_s),
+            np.mean(pred_recon_loss_s),
+            np.mean(mdn_loss_s)
+        )
+        log.log(log_string)
+    log.end()

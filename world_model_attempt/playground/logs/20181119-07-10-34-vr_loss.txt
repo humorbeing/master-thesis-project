@@ -1,0 +1,26 @@
+Epoch: 0, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19022.305908, Pred Recon Loss: 0.000342, MDN Loss: 0.962684
+Epoch: 1, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19020.119580, Pred Recon Loss: 0.000342, MDN Loss: 0.963446
+Epoch: 2, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19031.287695, Pred Recon Loss: 0.000342, MDN Loss: 0.963669
+Epoch: 3, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19003.366211, Pred Recon Loss: 0.000342, MDN Loss: 0.963153
+Epoch: 4, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19029.391797, Pred Recon Loss: 0.000342, MDN Loss: 0.964035
+Epoch: 5, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 18975.179102, Pred Recon Loss: 0.000342, MDN Loss: 0.962491
+Epoch: 6, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19023.451855, Pred Recon Loss: 0.000342, MDN Loss: 0.963638
+Epoch: 7, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19074.160156, Pred Recon Loss: 0.000342, MDN Loss: 0.964204
+Epoch: 8, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 18984.014355, Pred Recon Loss: 0.000342, MDN Loss: 0.962639
+Epoch: 9, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 18968.019482, Pred Recon Loss: 0.000342, MDN Loss: 0.962464
+Epoch: 10, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19014.525342, Pred Recon Loss: 0.000342, MDN Loss: 0.963356
+Epoch: 11, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19011.741650, Pred Recon Loss: 0.000342, MDN Loss: 0.962821
+Epoch: 12, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19035.572852, Pred Recon Loss: 0.000342, MDN Loss: 0.963483
+Epoch: 13, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19035.106348, Pred Recon Loss: 0.000342, MDN Loss: 0.963083
+Epoch: 14, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 18977.910693, Pred Recon Loss: 0.000342, MDN Loss: 0.962526
+Epoch: 15, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19001.189648, Pred Recon Loss: 0.000342, MDN Loss: 0.963128
+Epoch: 16, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19055.196875, Pred Recon Loss: 0.000342, MDN Loss: 0.964170
+Epoch: 17, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 19095.530322, Pred Recon Loss: 0.000342, MDN Loss: 0.964934
+Epoch: 18, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 18948.666846, Pred Recon Loss: 0.000342, MDN Loss: 0.961711
+Epoch: 19, Next KL: 16.000000, Next Recon Loss: 0.000327, Pred Loss: 18972.835107, Pred Recon Loss: 0.000342, MDN Loss: 0.962587
+
+
+ok, new logging style
+
+i changed S_t from nograd to ommit it.
+need to fix para share.

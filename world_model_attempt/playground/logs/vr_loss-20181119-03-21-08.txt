@@ -1,0 +1,15 @@
+Epoch: 0, Next KL: 16.240203, Next Recon Loss: 0.050214, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 1, Next KL: 16.000000, Next Recon Loss: 0.006343, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 2, Next KL: 16.000000, Next Recon Loss: 0.002743, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 3, Next KL: 16.000000, Next Recon Loss: 0.001261, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 4, Next KL: 16.021406, Next Recon Loss: 0.000663, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 5, Next KL: 16.000000, Next Recon Loss: 0.000574, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 6, Next KL: 16.000000, Next Recon Loss: 0.000455, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 7, Next KL: 16.020315, Next Recon Loss: 0.000420, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 8, Next KL: 16.000000, Next Recon Loss: 0.000416, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 9, Next KL: 16.064853, Next Recon Loss: 0.000464, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+
+
+st with no grad()
+st+1 is ->loss
+seed: 1

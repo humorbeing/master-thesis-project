@@ -1,0 +1,3 @@
+
+no logs, just checking torch.no_grad()
+only st with no grad()

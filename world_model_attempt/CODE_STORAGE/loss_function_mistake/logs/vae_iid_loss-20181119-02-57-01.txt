@@ -1,0 +1,40 @@
+epoch: 0, KL loss: 16.00, Reconstruct loss: 0.07611702952314825
+epoch: 1, KL loss: 16.00, Reconstruct loss: 0.07527004313819549
+epoch: 2, KL loss: 16.00, Reconstruct loss: 0.06799429194892154
+epoch: 3, KL loss: 16.00, Reconstruct loss: 0.03371781538076261
+epoch: 4, KL loss: 16.00, Reconstruct loss: 0.014315151719047743
+epoch: 5, KL loss: 16.00, Reconstruct loss: 0.0069420754032976486
+epoch: 6, KL loss: 16.00, Reconstruct loss: 0.005268344683024813
+epoch: 7, KL loss: 16.00, Reconstruct loss: 0.005089260582976481
+epoch: 8, KL loss: 16.00, Reconstruct loss: 0.004194906666217481
+epoch: 9, KL loss: 16.00, Reconstruct loss: 0.0035434038761784047
+epoch: 10, KL loss: 16.00, Reconstruct loss: 0.0030608007903484735
+epoch: 11, KL loss: 16.00, Reconstruct loss: 0.002641131087918492
+epoch: 12, KL loss: 16.00, Reconstruct loss: 0.002375745721270933
+epoch: 13, KL loss: 16.00, Reconstruct loss: 0.00349780625444563
+epoch: 14, KL loss: 16.00, Reconstruct loss: 0.0032816325889571626
+epoch: 15, KL loss: 16.00, Reconstruct loss: 0.0024150132256395675
+epoch: 16, KL loss: 16.00, Reconstruct loss: 0.0019624919822329983
+epoch: 17, KL loss: 16.00, Reconstruct loss: 0.0016829599078525515
+epoch: 18, KL loss: 16.00, Reconstruct loss: 0.0014533352873781148
+epoch: 19, KL loss: 16.00, Reconstruct loss: 0.0012668906711041927
+Epoch: 0, Next KL: 16.000000, Next Recon Loss: 0.080456, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 1, Next KL: 16.000000, Next Recon Loss: 0.077445, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 2, Next KL: 17.130787, Next Recon Loss: 0.043740, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 3, Next KL: 16.359746, Next Recon Loss: 0.014837, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 4, Next KL: 24.642452, Next Recon Loss: 0.006461, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 5, Next KL: 36.887985, Next Recon Loss: 0.004115, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 6, Next KL: 43.667106, Next Recon Loss: 0.003050, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 7, Next KL: 48.601749, Next Recon Loss: 0.002288, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 8, Next KL: 52.769628, Next Recon Loss: 0.001711, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 9, Next KL: 56.734645, Next Recon Loss: 0.001306, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 10, Next KL: 62.084244, Next Recon Loss: 0.001078, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 11, Next KL: 67.790104, Next Recon Loss: 0.000915, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 12, Next KL: 73.604408, Next Recon Loss: 0.000783, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 13, Next KL: 79.579559, Next Recon Loss: 0.000681, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 14, Next KL: 85.206244, Next Recon Loss: 0.000606, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 15, Next KL: 90.814076, Next Recon Loss: 0.000552, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 16, Next KL: 96.806654, Next Recon Loss: 0.000513, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 17, Next KL: 102.900191, Next Recon Loss: 0.000484, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 18, Next KL: 108.745109, Next Recon Loss: 0.000462, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
+Epoch: 19, Next KL: 114.193640, Next Recon Loss: 0.000444, Pred Loss: 0.000000, Pred Recon Loss: 0.000000, MDN Loss: 0.000000
